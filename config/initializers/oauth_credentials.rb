@@ -1,1 +1,1 @@
-FBAPI = { :key => '152029498155924', :secret => 'bcf46ed747c332e952db0dc5785fa815' }
+FBAPI = { :key => '102633759803127', :secret => 'b7739edbe06516a91410b35d16f20728' }
