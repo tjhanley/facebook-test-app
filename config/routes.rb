@@ -6,4 +6,6 @@ ActionController::Routing::Routes.draw do |map|  map.oauth_authorize '/oauth/:se
   map.resource :account, :controller => "users"
   map.resources :users
   
+  map.root :controller => "user_sessions", :action => "new"
+  
 end

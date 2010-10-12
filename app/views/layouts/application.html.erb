@@ -36,8 +36,6 @@
 <%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
 <br />
 <br />
-<%= link_to "Ask", ask_index_path %> |
-<%= link_to "Posts", posts_path %> |
 <% if !current_user %>
   <%= link_to "Register", new_account_path %> |
   <%= link_to "Log In", new_user_session_path %> |

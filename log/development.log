@@ -1,1 +1,109 @@
-# Logfile created on Mon Oct 11 20:46:22 -0700 2010
+# Logfile created on Mon Oct 11 20:46:22 -0700 2010  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'wf_dev.users' doesn't exist: SHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (64.2ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (8.9ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100621180931)
+  [4;36;1mSQL (3.1ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `crypted_password` varchar(255) NOT NULL, `password_salt` varchar(255) NOT NULL, `persistence_token` varchar(255) NOT NULL, `single_access_token` varchar(255) NOT NULL, `perishable_token` varchar(255) NOT NULL, `login_count` int(11) DEFAULT 0 NOT NULL, `failed_login_count` int(11) DEFAULT 0 NOT NULL, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100621180931')[0m
+Migrating to AddOauth2FieldsToUser (20100826195248)
+  [4;36;1mSQL (6.0ms)[0m   [0;1mALTER TABLE `users` ADD `oauth2_token` varchar(255)[0m
+  [4;35;1mSQL (5.6ms)[0m   [0mCREATE INDEX `index_users_on_oauth2_token` ON `users` (`oauth2_token`)[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100826195248')[0m
+Migrating to AddFbIdToUser (20100826203458)
+  [4;35;1mSQL (5.9ms)[0m   [0mALTER TABLE `users` ADD `facebook_uid` varchar(255)[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100826203458')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-10-11 20:56:25) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /Library/Ruby/Gems/1.8/gems/authlogic_oauth2-1.1.2/lib/oauth2_callback_filter.rb:10:in `call'
+  passenger (2.2.11) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.11) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:418:in `start_request_handler'
+  passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:358:in `handle_spawn_application'
+  passenger (2.2.11) lib/phusion_passenger/utils.rb:184:in `safe_fork'
+  passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:354:in `handle_spawn_application'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:213:in `start'
+  passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:262:in `spawn_rails_application'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:256:in `spawn_rails_application'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:255:in `spawn_rails_application'
+  passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:154:in `spawn_application'
+  passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:287:in `handle_spawn_application'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-10-11 20:58:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mSQL (23.0ms)[0m   [0mSELECT count(*) AS count_all FROM `users` WHERE (last_request_at > '2010-10-12 03:48:38') [0m
+
+ActionView::TemplateError (undefined local variable or method `ask_index_path' for #<ActionView::Base:0x22f57b8>) on line #39 of app/views/layouts/application.html.erb:
+36: <%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
+37: <br />
+38: <br />
+39: <%= link_to "Ask", ask_index_path %> |
+40: <%= link_to "Posts", posts_path %> |
+41: <% if !current_user %>
+42:   <%= link_to "Register", new_account_path %> |
+
+    app/views/layouts/application.html.erb:39
+    /Library/Ruby/Gems/1.8/gems/authlogic_oauth2-1.1.2/lib/oauth2_callback_filter.rb:10:in `call'
+    passenger (2.2.11) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+    passenger (2.2.11) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+    passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:418:in `start_request_handler'
+    passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:358:in `handle_spawn_application'
+    passenger (2.2.11) lib/phusion_passenger/utils.rb:184:in `safe_fork'
+    passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:354:in `handle_spawn_application'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:163:in `start'
+    passenger (2.2.11) lib/phusion_passenger/railz/application_spawner.rb:213:in `start'
+    passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:262:in `spawn_rails_application'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+    passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:256:in `spawn_rails_application'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+    passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:255:in `spawn_rails_application'
+    passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:154:in `spawn_application'
+    passenger (2.2.11) lib/phusion_passenger/spawn_manager.rb:287:in `handle_spawn_application'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+    passenger (2.2.11) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendered rescues/_trace (132.4ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
