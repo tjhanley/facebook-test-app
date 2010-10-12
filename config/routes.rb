@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :ask
-
   map.resources :posts
   map.oauth_authorize '/oauth/:service/start', :controller => 'oauth', :action => 'start'
   map.oauth_callback '/oauth/:service/callback', :controller => 'oauth', :action => 'callback'
