@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem "will_paginate"
   config.gem "oauth2" 
   config.gem "authlogic_oauth2"
+  config.gem "koala"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

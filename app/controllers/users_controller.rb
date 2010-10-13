@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]   
-
+  before_filter :get_foursquare_consumer, :show
   
   def new
     @user = User.new
@@ -36,4 +36,11 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  private
+  
+  def get_foursquare_consumer
+    @facebook = Facebook.new(@current_user)
+  end                                      
+  
 end

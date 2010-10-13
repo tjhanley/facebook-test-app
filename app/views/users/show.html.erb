@@ -1,3 +1,9 @@
+
+<% profile = @facebook.get_object("me") %>
+<%= debug profile %>
+<% friends = @facebook.get_connections("me", "friends") %>
+<%= debug friends %>
+
 <p>
   <b>Email:</b>
   <%=h @user.email %>
