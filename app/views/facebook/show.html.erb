@@ -1,11 +1,19 @@
 <img src="<%= "#{FB[:graph_url]}#{@friend["id"]}/picture" %>" border="0" align="top">
 <h1><%= @friend["name"] %></h1>
-<% if @likes.present? %>
+<% if @theirs.present? %>
+<h2>Similar Likes</h2>
 <ol>
   <% @likes.each do |like| %>
     <li><%= like["name"] %></li>
   <% end %>
-</ol>
+</ol>                          
+<hr>
+<ul>
+  <% @theirs.each do |like| %>
+    <li><%= like["name"] %></li>
+  <% end %>
+</ul>                          
+
 <% else %>
   This person either likes nothing, they don't like to share, or they have nothing in common with you...
 <% end %>

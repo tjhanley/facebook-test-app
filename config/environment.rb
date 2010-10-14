@@ -20,8 +20,6 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "authlogic"
-  config.gem "fastercsv"
-  config.gem "will_paginate"
   config.gem "oauth2" 
   config.gem "authlogic_oauth2"
   config.gem "koala"
