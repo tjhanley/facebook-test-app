@@ -8,4 +8,5 @@ ActionController::Routing::Routes.draw do |map|  map.oauth_authorize '/oauth/:se
   
   map.root :controller => "user_sessions", :action => "new"
   
+  map.connect ':controller/:action/:id'
 end

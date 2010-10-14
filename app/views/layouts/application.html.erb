@@ -31,6 +31,7 @@
 <p style="color: green"><%= flash[:notice] %></p>
 <div class="galactus">
   <div class="login-form">
+    <div id="loader"><%= image_tag('ajax-loader.gif') %></div>
   <%= yield  %>       
   </div>
 </div>

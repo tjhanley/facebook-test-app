@@ -2,7 +2,14 @@
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
     $('li').click(function(){
-      alert($(this).attr('id'));
+      $('#preview-pane').load('/facebook/show/' + $(this).attr('id'));
+      $('#loader').ajaxStart(function(){
+         $(this).show();
+      });
+      $('#loader').ajaxStop(function(){
+         $(this).hide();
+      });
+
     });
   });
   

@@ -12,7 +12,12 @@
   width:390px;
   height:400px;
   float:right;
+  overflow-y: scroll; 
 }         
+#loader{
+  float:right;
+  display:none;
+}
 li:hover{ 
   cursor:pointer;          
   text-decoration:underline;

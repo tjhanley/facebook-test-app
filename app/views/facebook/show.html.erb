@@ -1,0 +1,8 @@
+<% if @likes.present? %>
+  <% @likes.each do |like| %>
+    <%#= like.class %>
+    <%= like["name"] %><br />
+  <% end %>
+<% else %>
+  This person either likes nothing, they don't like to share, or they have nothing in common with you...
+<% end %>

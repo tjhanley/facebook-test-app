@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = @current_user
     @profile = @facebook.profile
     @friends = @facebook.friends
-    @likes = @facebook.likes('me')
+    @likes = @facebook.likes
   end
 
   def edit
