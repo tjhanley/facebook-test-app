@@ -9,10 +9,11 @@
 }
 #preview-pane{
   background-color:#ccc;
-  width:390px;
+  width:370px;
   height:400px;
   float:right;
-  overflow-y: scroll; 
+  overflow-y: scroll;
+  padding:5px 10px 5px 10px; 
 }         
 #loader{
   float:right;

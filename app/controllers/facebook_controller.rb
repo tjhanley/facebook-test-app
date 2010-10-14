@@ -6,6 +6,7 @@ class FacebookController < ApplicationController
     mine = @facebook.likes
     theirs = @facebook.likes(params[:id])
     @likes = @facebook.compare_likes(mine,theirs)
+    @friend = @facebook.profile(params[:id]) 
     render :layout => false
   end                              
   
