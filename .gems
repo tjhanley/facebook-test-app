@@ -2,3 +2,4 @@ authlogic --version 2.1.5
 oauth2
 authlogic_oauth2
 koala
+faraday
