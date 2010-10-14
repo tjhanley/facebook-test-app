@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]   
-  before_filter :get_foursquare_consumer, :show
+  before_filter :get_foursquare_consumer, :only =>[ :show ]
   
   def new
     @user = User.new
@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   
   def show
     @user = @current_user
+    @profile = @facebook.profile
+    @friends = @facebook.friends
+    @likes = @facebook.likes('me')
   end
 
   def edit

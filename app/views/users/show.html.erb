@@ -1,43 +1,28 @@
 
-<% profile = @facebook.get_object("me") %>
-<%= debug profile %>
-<% friends = @facebook.get_connections("me", "friends") %>
-<%= debug friends %>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $('li').click(function(){
+      alert($(this).attr('id'));
+    });
+  });
+  
+</script>
 
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
+<img src="<%= "#{FB[:graph_url]}#{@profile["id"]}/picture" %>" border="0" align="top">
+<h1>Hello <%= @profile["name"] %></h1>                         
 
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
-
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
-
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
-
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
+<div id="main-container">
+   <div id="friend-container" class="wrp">
+     <ul id="friend-list">
+      <% @friends.each do |friend| %>
+        <li id="<%= friend["id"] %>"><%= friend["name"] %></li>
+      <% end %>
+     </ul>
+   </div> 
+   <div id="preview-pane">
+     
+   </div> 
+   <div class="clr"> </div>
+</div>
 
 
-<%= link_to 'Edit', edit_account_path %>

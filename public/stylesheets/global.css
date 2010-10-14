@@ -1,0 +1,41 @@
+#main-container{
+  border:thin solid #999;
+}
+#friend-container{
+  width:250px;
+  height:400px;
+  overflow-y: scroll; 
+  float:left;
+}
+#preview-pane{
+  background-color:#ccc;
+  width:390px;
+  height:400px;
+  float:right;
+}         
+li:hover{ 
+  cursor:pointer;          
+  text-decoration:underline;
+}
+.wrp {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+.clr {
+  clear: both;
+  font-size: 0.01%;
+  height: 0px;
+  line-height: 0;
+  overflow: hidden;
+}
+.galactus{
+  background:url(http://i.annihil.us/u/prod/marvel//universe3zx/images/7/75/Pete--Galactus_low_angle.jpg) no-repeat;
+  padding:50px;
+}
+
+.login-form{
+  background-color:#fff;
+  padding:10px 30px;
+  width:650px;
+}

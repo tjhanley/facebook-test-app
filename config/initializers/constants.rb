@@ -1,0 +1,1 @@
+FB = { :graph_url => 'http://graph.facebook.com/' }
